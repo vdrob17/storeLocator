@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Drobko\Storelocator\Api\Data\StoreLocatorInterface"
+                type="Drobko\Storelocator\Model\StoreLocator"/>
+    <preference for="Drobko\Storelocator\Api\StoreLocatorRepositoryInterface"
+                type="Drobko\Storelocator\Model\StoreLocatorRepository"/>
+
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="drobko_storelocator_listing_data_source" xsi:type="string">
+                    Drobko\Storelocator\Model\ResourceModel\StoreLocator\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Drobko\Storelocator\Model\ResourceModel\StoreLocator\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">stores_list</argument>
+            <argument name="eventPrefix" xsi:type="string">drobko_storelocator_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">store_locator_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Drobko\Storelocator\Model\ResourceModel\StoreLocator
+            </argument>
+        </arguments>
+    </type>
+    <type name="Drobko\Storelocator\Console\Command\ImportCSV">
+        <arguments>
+            <argument name="name" xsi:type="string">drobko:import</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="drobko_import" xsi:type="object">Drobko\Storelocator\Console\Command\ImportCSV</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

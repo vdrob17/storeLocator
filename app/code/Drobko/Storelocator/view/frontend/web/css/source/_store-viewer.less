@@ -1,0 +1,89 @@
+& when (@media-common = true) {
+    #storeViewer {
+        display: flex;
+
+        .storeCard {
+            width: 30%;
+            background-color: #FBFBFB;
+            box-sizing: border-box;
+            padding: 0 15px;
+
+            hr { margin: 15px 0; }
+
+            .storeInfo {
+                p a:before {
+                    background-size: 20px 20px;
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    content:"";
+                    position: relative;
+                    top: 5px;
+                    margin-right: 15px;
+                }
+
+                .web a:before {
+                    background-image: url('Drobko_Storelocator::images/icons/web-icon.png');
+                }
+                .phone a:before {
+                    background-image: url("Drobko_Storelocator::images/icons/phone-icon.png");
+                }
+                .mail a:before {
+                    background-image: url("Drobko_Storelocator::images/icons/mail-icon.png");
+                }
+
+                a {
+                    color: #000;
+                    font-weight: bold;
+                }
+            }
+
+            .storePhoto {
+                p { font-weight: bold; }
+            }
+        }
+
+        .storeDescription {
+            width: 68%;
+            height: 100%;
+
+            #map {
+                width: 100%;
+                min-height: 500px;
+            }
+
+            .description {
+                display: inline-block;
+                box-sizing: border-box;
+                width: 100%;
+                margin: 5px 0 0 10px;
+                padding: 15px 15px 20px;
+                background-color: #FBFBFB;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    #storeViewer {
+        flex-direction: column;
+
+        .storeCard {
+            width: 100%;
+
+            p { margin-bottom: 2px; }
+
+            .storeInfo { text-align: center; }
+
+            .storePhoto { text-align: center; }
+        }
+
+        .storeDescription {
+            width: 100%;
+
+            #map { margin: 10px 0; }
+
+            .description { margin: 0; }
+        }
+    }
+}
